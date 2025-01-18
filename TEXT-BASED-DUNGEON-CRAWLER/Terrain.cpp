@@ -1,9 +1,8 @@
-#include "Terrain.h"
+﻿#include "Terrain.h"
 #include <string>
 #include <iostream>
 #include <ctime>
 
-#define GRAY system("Color 08");
 #define EMPTY "\033[48;5;15m";
 #define RESET "\033[0m";
 
@@ -22,8 +21,8 @@ void Terrain::generateRandomRoom() {
 
 bool Terrain::canPlaceRoom(int y, int x, int roomWidth, int roomHeight) {
     if (y + roomWidth > 50|| x + roomHeight > 150) return false;
-    for (int tmpY = y; tmpY < roomHeight + y; tmpY++) {
-        for (int tmpX = x; tmpX < roomWidth + x; tmpX++) {
+    for (int tmpY = y - 1; tmpY <= roomHeight + y; tmpY++) {
+        for (int tmpX = x - 1; tmpX <= roomWidth + x; tmpX++) {
             if (this->terrainMap[tmpY][tmpX] == 'E') return false;
         }
     }
@@ -53,14 +52,15 @@ void Terrain::printTerrain() {
 }
 
 Terrain::Terrain() {
-    memset(terrainMap, 'W', sizeof(terrainMap)); // Initialize terrain map to 'w'
+    memset(terrainMap, 'X', sizeof(terrainMap));
     
+    srand(static_cast<unsigned int>(time(NULL)));
     int roomNumber = rand() % 7 + 5;
     std::cout << roomNumber << std::endl;
     while (roomNumber > 0) {
-        srand(static_cast<unsigned int>(time(NULL)));
         generateRandomRoom();
         roomNumber--;
+        srand(static_cast<unsigned int>(time(NULL)));
     }
     printTerrain();
     return;
