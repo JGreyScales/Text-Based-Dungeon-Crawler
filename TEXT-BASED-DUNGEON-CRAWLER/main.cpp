@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Terrain.h"
 
 int main(void) {
 	//Player* player = new Warrior();
@@ -6,8 +7,7 @@ int main(void) {
 	//
 	//Warrior* warptr = dynamic_cast<Warrior*>(player);
 	//warptr->onlyWarrior();
-
-
+	Terrain* awa = new Terrain();
 	//delete player;
 	return 0;
 }

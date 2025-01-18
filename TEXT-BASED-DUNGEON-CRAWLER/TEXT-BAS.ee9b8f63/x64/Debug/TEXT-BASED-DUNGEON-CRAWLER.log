@@ -1,15 +1,4 @@
-﻿  main.cpp
-  Player.cpp
-  Generating Code...
-D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\main.cpp(9,21): error C2683: 'dynamic_cast': 'Player' is not a polymorphic type
-      D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\Player.h(2,7):
-      see declaration of 'Player'
-  
-D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\Player.cpp(2,7): error C2011: 'Player': 'class' type redefinition
-      D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\Player.h(2,7):
-      see declaration of 'Player'
-  
-D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\Player.cpp(18,7): error C2011: 'Warrior': 'class' type redefinition
-      D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\Player.h(13,7):
-      see declaration of 'Warrior'
-  
+﻿  Terrain.cpp
+  TEXT-BASED-DUNGEON-CRAWLER.vcxproj -> D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\x64\Debug\TEXT-BASED-DUNGEON-CRAWLER.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.
