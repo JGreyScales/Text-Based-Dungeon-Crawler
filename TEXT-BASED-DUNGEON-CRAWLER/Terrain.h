@@ -24,6 +24,7 @@ enum DIRECTION {SOUTH, WEST, EAST, NORTH};
 
 class Terrain {
 	room rooms[11];
+	unsigned int generatedRoomCount;
 	char terrainMap[50][150];
 	room generateRandomRoom();
 	bool canPlaceRoom(int, int, int, int);

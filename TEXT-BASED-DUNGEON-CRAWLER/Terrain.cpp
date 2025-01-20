@@ -102,7 +102,7 @@ void Terrain::placeRoom(int y, int x, int roomWidth, int roomHeight) {
 
 
 void Terrain::connectAllRooms(room rooms[11]) {
-    for (int i = 1; i < 10; i++) {
+    for (int i = 1; i < generatedRoomCount; i++) {
         connectRoom(rooms[i - 1], rooms[i], 0, 0, 0, 0);
     }
     return;
@@ -118,21 +118,39 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
         sy = randomBetween(secondary.getLY(), secondary.getUY());
     }
 
+    switch (rand() % 13)
+    {
+    case 1:
+        px++;
+        break;
+    case 2:
+        py++;
+        break;
+    case 3:
+        px--;
+        break;
+    case 4:
+        py--;
+        break;
+    default:
+        if (px < sx) {
+            px++;
+        }
+        else if (py < sy) {
+            py++;
+        }
+        else if (px > sx) {
+            px--;
+        } // py > sy
+        else {
+            py--;
+        };
+    }
+
 
     // check what direction secondary is from primary & move accordingly
     // the player cant move diagonal, so can only move 1 direction at a time
-    if (px < sx) {
-        px++;
-    }
-    else if (py < sy) {
-        py++;
-    }
-    else if (px > sx) {
-        px--;
-    } // py > sy
-    else {
-        py--;
-    }
+
 
     if (px < 0 || py < 0) {
         return false;
@@ -145,8 +163,8 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
     }
     else if (connectRoom(primary, secondary, px, py, sx, sy)) {
         terrainMap[py][px] = 'E';
+        return true;
     }
-    return true;
 }
 
 void Terrain::printTerrain() {
@@ -167,9 +185,9 @@ Terrain::Terrain() {
     memset(terrainMap, 'X', sizeof(terrainMap));
 
     srand(static_cast<unsigned int>(time(NULL)));
-    int roomNumber = rand() % 7 + 5;
+    generatedRoomCount = rand() % 7 + 5;
     int ticker = 0;
-    while (ticker < roomNumber) {
+    while (ticker < generatedRoomCount) {
         rooms[ticker] = generateRandomRoom();
         ticker++;
         srand(static_cast<unsigned int>(time(NULL)));
