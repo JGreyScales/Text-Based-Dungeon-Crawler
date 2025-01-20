@@ -1,4 +1,5 @@
 ﻿#include "Terrain.h"
+#include "utils.h"
 #include <string>
 #include <iostream>
 #include <ctime>
@@ -70,7 +71,7 @@ room Terrain::generateRandomRoom() {
         newRoom.setLX(rand() % 150);
         int roomWidth = rand() % 3 + 8;
         int roomHeight = rand() % 3 + 8;
-        newRoom.setUY(newRoom.getUY() + roomHeight);
+        newRoom.setUY(newRoom.getLY() + roomHeight);
         newRoom.setUX(newRoom.getLX() + roomWidth);
 
         if (canPlaceRoom(newRoom.getLY(), newRoom.getLX(), roomWidth, roomHeight)) {
@@ -81,7 +82,7 @@ room Terrain::generateRandomRoom() {
 }
 
 bool Terrain::canPlaceRoom(int y, int x, int roomWidth, int roomHeight) {
-    if (y + roomWidth > 50|| x + roomHeight > 150) return false;
+    if (y + roomHeight > 50|| x + roomWidth > 150) return false;
     for (int tmpY = y - 1; tmpY <= roomHeight + y; tmpY++) {
         for (int tmpX = x - 1; tmpX <= roomWidth + x; tmpX++) {
             if (this->terrainMap[tmpY][tmpX] == 'E') return false;
@@ -101,7 +102,7 @@ void Terrain::placeRoom(int y, int x, int roomWidth, int roomHeight) {
 
 
 void Terrain::connectAllRooms(room rooms[11]) {
-    for (int i = 1; i < 11; i++) {
+    for (int i = 1; i < 10; i++) {
         connectRoom(rooms[i - 1], rooms[i], 0, 0, 0, 0);
     }
     return;
@@ -110,10 +111,11 @@ void Terrain::connectAllRooms(room rooms[11]) {
 
 bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, int sx = 0, int sy = 0) {
     if (px == 0 && py == 0) {
-        px = primary.getLX() + floor((primary.getUX() - primary.getLX()) / 2); // get the middle of the room
-        py = primary.getLY() + floor((primary.getUY() - primary.getLY()) / 2);
-        sx = secondary.getLX() + floor((secondary.getUX() - secondary.getLX()) / 2);
-        sy = secondary.getLY() + floor((secondary.getUY() - secondary.getLY()) / 2);
+        px = randomBetween(primary.getLX(), primary.getUX());
+        py = randomBetween(primary.getLY(), primary.getUY());
+
+        sx = randomBetween(secondary.getLX(), secondary.getUX());
+        sy = randomBetween(secondary.getLY(), secondary.getUY());
     }
 
 
@@ -135,8 +137,6 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
     if (px < 0 || py < 0) {
         return false;
     }
-
-    std::cout << px << " " << py << " " << sx << " " << sy << std::endl;
 
     if (py == sy && px == sx) {
         // we would have been in the center of the object; so it really doesn't matter

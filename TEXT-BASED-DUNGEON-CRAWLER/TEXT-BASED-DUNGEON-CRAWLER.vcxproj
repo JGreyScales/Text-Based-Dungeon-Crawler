@@ -131,10 +131,12 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="POSSIBLE_ROOM_GEN.cpp" />
     <ClCompile Include="Terrain.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h" />
     <ClInclude Include="Terrain.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
