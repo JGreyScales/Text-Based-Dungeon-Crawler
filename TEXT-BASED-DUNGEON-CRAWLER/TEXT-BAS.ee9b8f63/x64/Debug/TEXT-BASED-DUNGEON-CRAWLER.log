@@ -1,4 +1,8 @@
 ﻿  Terrain.cpp
+D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\Terrain.cpp(113,30): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\Terrain.cpp(114,30): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\Terrain.cpp(115,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\Terrain.cpp(116,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   TEXT-BASED-DUNGEON-CRAWLER.vcxproj -> D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\x64\Debug\TEXT-BASED-DUNGEON-CRAWLER.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

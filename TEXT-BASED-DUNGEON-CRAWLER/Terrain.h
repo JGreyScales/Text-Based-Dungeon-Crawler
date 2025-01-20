@@ -19,6 +19,8 @@ public:
 	room();
 };
 
+enum DIRECTION {SOUTH, WEST, EAST, NORTH};
+
 
 class Terrain {
 	room rooms[11];
@@ -26,7 +28,8 @@ class Terrain {
 	room generateRandomRoom();
 	bool canPlaceRoom(int, int, int, int);
 	void placeRoom(int, int, int, int);
-	void dijsktraConnect(room, room);
+	void connectAllRooms(room[11]);
+	bool connectRoom(room, room, int, int, int, int);
 public:
 	void printTerrain();
 	Terrain();
