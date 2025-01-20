@@ -6,15 +6,60 @@
 #define EMPTY "\033[48;5;15m";
 #define RESET "\033[0m";
 
-void Terrain::generateRandomRoom() {
+room::room() {
+    lX = 0;
+    lY = 0;
+    uX = 0;
+    uY = 0;
+}
+
+
+void room::setLX(int a) {
+    lX = a;
+}
+
+void room::setLY(int a) {
+    lY = a;
+}
+
+void room::setUX(int a) {
+    uX = a;
+}
+
+void room::setUY(int a) {
+    uY = a;
+}
+
+
+int room::getLX() {
+    return lX;
+}
+
+int room::getLY() {
+    return lY;
+}
+
+int room::getUX() {
+    return uX;
+}
+
+int room::getUY() {
+    return uY;
+}
+
+
+
+room Terrain::generateRandomRoom() {
+    room newRoom = room();
     while (true) {
+        newRoom.setLY(rand() % 48);
+        newRoom.setLX(rand() % 150);
         int roomWidth = rand() % 3 + 8;
         int roomHeight = rand() % 3 + 8;
-        int y = rand() % 48;
-        int x = rand() % 150;
-        if (canPlaceRoom(y, x, roomWidth, roomHeight)) {
-            placeRoom(y, x, roomWidth, roomHeight);
-            return;
+
+        if (canPlaceRoom(newRoom.getLY(), newRoom.getLX(), roomWidth, roomHeight)) {
+            placeRoom(newRoom.getLY(), newRoom.getLX(), roomWidth, roomHeight);
+            return newRoom;
         }
     }
 }
@@ -39,12 +84,12 @@ void Terrain::placeRoom(int y, int x, int roomWidth, int roomHeight) {
 }
 
 void Terrain::printTerrain() {
-    for (int x = 0; x < 50; x++) {
-        for (int y = 0; y < 150; y++) {
-            if (terrainMap[x][y] == 'E') {
+    for (int y = 0; y < 50; y++) {
+        for (int x = 0; x < 150; x++) {
+            if (terrainMap[y][x] == 'E') {
                 std::cout << EMPTY;
             }
-            std::cout << terrainMap[x][y] << RESET;
+            std::cout << terrainMap[y][x] << RESET;
         }
         std::cout << std::endl;
     }
@@ -52,14 +97,15 @@ void Terrain::printTerrain() {
 }
 
 Terrain::Terrain() {
+    memset(this, 0, sizeof(Terrain));
     memset(terrainMap, 'X', sizeof(terrainMap));
-    
+
     srand(static_cast<unsigned int>(time(NULL)));
     int roomNumber = rand() % 7 + 5;
-    std::cout << roomNumber << std::endl;
-    while (roomNumber > 0) {
-        generateRandomRoom();
-        roomNumber--;
+    int ticker = 0;
+    while (ticker < roomNumber) {
+        rooms[ticker] = generateRandomRoom();
+        ticker++;
         srand(static_cast<unsigned int>(time(NULL)));
     }
     printTerrain();
