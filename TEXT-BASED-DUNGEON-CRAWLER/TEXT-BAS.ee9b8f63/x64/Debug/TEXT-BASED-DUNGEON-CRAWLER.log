@@ -1,7 +1,4 @@
 ﻿  Terrain.cpp
-D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\Terrain.cpp(105,23): warning C4018: '<': signed/unsigned mismatch
-D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\Terrain.cpp(190,19): warning C4018: '<': signed/unsigned mismatch
-D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\Terrain.cpp(168,1): warning C4715: 'Terrain::connectRoom': not all control paths return a value
   TEXT-BASED-DUNGEON-CRAWLER.vcxproj -> D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\x64\Debug\TEXT-BASED-DUNGEON-CRAWLER.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

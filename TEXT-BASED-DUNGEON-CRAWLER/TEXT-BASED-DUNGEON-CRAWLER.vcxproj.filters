@@ -16,15 +16,24 @@
     <Filter Include="Source Files\Utils">
       <UniqueIdentifier>{c46328a6-585b-401f-8acb-0d5da2e73e17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Map">
+      <UniqueIdentifier>{ae552639-cdbc-46db-bcc6-7948fa7d4dd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\utils">
+      <UniqueIdentifier>{9efb0be7-56c6-4d4b-b890-0f72adbf0004}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\map">
+      <UniqueIdentifier>{71387b55-ca17-45f6-841c-8427c6da0789}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player">
+      <UniqueIdentifier>{93834708-f828-4cb9-80eb-365115c6db3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Player">
+      <UniqueIdentifier>{1b1dc600-1345-4ad7-a0c1-906ed863aa94}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Terrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="POSSIBLE_ROOM_GEN.cpp">
@@ -33,16 +42,28 @@
     <ClCompile Include="utils.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="room.cpp">
+      <Filter>Source Files\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
-      <Filter>Resource Files</Filter>
+    <ClInclude Include="utils.h">
+      <Filter>Resource Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="room.h">
+      <Filter>Resource Files\map</Filter>
     </ClInclude>
     <ClInclude Include="Terrain.h">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\map</Filter>
     </ClInclude>
-    <ClInclude Include="utils.h">
-      <Filter>Resource Files</Filter>
+    <ClInclude Include="Player.h">
+      <Filter>Resource Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

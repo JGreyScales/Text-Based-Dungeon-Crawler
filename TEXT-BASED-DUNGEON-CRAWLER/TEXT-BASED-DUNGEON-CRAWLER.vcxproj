@@ -44,6 +44,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
+    <EnableASAN>true</EnableASAN>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -130,11 +131,13 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="POSSIBLE_ROOM_GEN.cpp" />
+    <ClCompile Include="room.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h" />
+    <ClInclude Include="room.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>

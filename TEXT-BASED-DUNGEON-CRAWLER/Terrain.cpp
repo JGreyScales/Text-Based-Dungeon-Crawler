@@ -1,74 +1,26 @@
 ﻿#include "Terrain.h"
 #include "utils.h"
+#include "room.h"
 #include <string>
 #include <iostream>
 #include <ctime>
-#include <climits>
 #include <math.h>
 
+#define PLAYER "\033[38;5;196m\033[48;5;15m"
 #define EMPTY "\033[48;5;15m";
 #define RESET "\033[0m";
 
-room::room() {
-    lX = 0;
-    lY = 0;
-    uX = 0;
-    uY = 0;
-}
 
-
-void room::setLX(int a) {
-    if (a < 0 || a > INT_MAX)
-        return;
-    lX = a;
-    return;
-}
-
-void room::setLY(int a) {
-    if (a < 0 || a > INT_MAX)
-        return;
-    lY = a;
-    return;
-}
-
-void room::setUX(int a) {
-    if (a < 0 || a > INT_MAX)
-        return;
-    uX = a;
-    return;
-}
-
-void room::setUY(int a) {
-    if (a < 0 || a > INT_MAX)
-        return;
-    uY = a;
-    return;
-}
-
-
-int room::getLX() {
-    return lX;
-}
-
-int room::getLY() {
-    return lY;
-}
-
-int room::getUX() {
-    return uX;
-}
-
-int room::getUY() {
-    return uY;
-}
 
 
 
 room Terrain::generateRandomRoom() {
     room newRoom = room();
+
+    //return newRoom;
     while (true) {
-        newRoom.setLY(rand() % 48);
-        newRoom.setLX(rand() % 150);
+        newRoom.setLY(rand() % 48 + 1);
+        newRoom.setLX(rand() % 148 + 1);
         int roomWidth = rand() % 3 + 8;
         int roomHeight = rand() % 3 + 8;
         newRoom.setUY(newRoom.getLY() + roomHeight);
@@ -82,7 +34,7 @@ room Terrain::generateRandomRoom() {
 }
 
 bool Terrain::canPlaceRoom(int y, int x, int roomWidth, int roomHeight) {
-    if (y + roomHeight > 50|| x + roomWidth > 150) return false;
+    if (y + roomHeight > 49|| x + roomWidth > 149) return false;
     for (int tmpY = y - 1; tmpY <= roomHeight + y; tmpY++) {
         for (int tmpX = x - 1; tmpX <= roomWidth + x; tmpX++) {
             if (this->terrainMap[tmpY][tmpX] == 'E') return false;
@@ -102,7 +54,7 @@ void Terrain::placeRoom(int y, int x, int roomWidth, int roomHeight) {
 
 
 void Terrain::connectAllRooms(room rooms[11]) {
-    for (int i = 1; i < generatedRoomCount; i++) {
+    for (unsigned int i = 1; i < generatedRoomCount; i++) {
         connectRoom(rooms[i - 1], rooms[i], 0, 0, 0, 0);
     }
     return;
@@ -118,6 +70,8 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
         sy = randomBetween(secondary.getLY(), secondary.getUY());
     }
 
+    // check what direction secondary is from primary & move accordingly
+    // the player cant move diagonal, so can only move 1 direction at a time
     switch (rand() % 13)
     {
     case 1:
@@ -147,11 +101,6 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
         };
     }
 
-
-    // check what direction secondary is from primary & move accordingly
-    // the player cant move diagonal, so can only move 1 direction at a time
-
-
     if (px < 0 || py < 0) {
         return false;
     }
@@ -165,14 +114,21 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
         terrainMap[py][px] = 'E';
         return true;
     }
+    return false;
+}
+
+void Terrain::spawnPlayer(room spawnRoom) {
+    int x = randomBetween(spawnRoom.getLX(), spawnRoom.getUX());
+    int y = randomBetween(spawnRoom.getLY(), spawnRoom.getUY());
+    terrainMap[y][x] = 'P';
+    return;
 }
 
 void Terrain::printTerrain() {
     for (int y = 0; y < 50; y++) {
         for (int x = 0; x < 150; x++) {
-            if (terrainMap[y][x] == 'E') {
-                std::cout << EMPTY;
-            }
+            if (terrainMap[y][x] == 'E') {std::cout << EMPTY;}
+            else if (terrainMap[y][x] == 'P') {std::cout << PLAYER;}
             std::cout << terrainMap[y][x] << RESET;
         }
         std::cout << std::endl;
@@ -186,13 +142,15 @@ Terrain::Terrain() {
 
     srand(static_cast<unsigned int>(time(NULL)));
     generatedRoomCount = rand() % 7 + 5;
-    int ticker = 0;
+    unsigned int ticker = 0;
     while (ticker < generatedRoomCount) {
         rooms[ticker] = generateRandomRoom();
         ticker++;
-        srand(static_cast<unsigned int>(time(NULL)));
     }
     connectAllRooms(rooms);
+    spawnPlayer(rooms[0]);
+
+
     printTerrain();
     return;
 }

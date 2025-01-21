@@ -1,6 +1,9 @@
 #include "Player.h"
 #include "Terrain.h"
 
+#include <windows.h>
+
+
 int main(void) {
 	//Player* player = new Warrior();
 	//player->testMethod();
