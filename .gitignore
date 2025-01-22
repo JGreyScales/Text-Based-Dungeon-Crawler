@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+*.ipch
+*.ipch
+TEXT-BASED-DUNGEON-CRAWLER/.vs/TEXT-BASED-DUNGEON-CRAWLER/v17/ipch/AutoPCH/b5604f02f3817a89/MAIN.ipch

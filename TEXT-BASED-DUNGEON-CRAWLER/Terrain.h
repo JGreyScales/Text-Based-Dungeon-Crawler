@@ -1,5 +1,10 @@
 #pragma once
 #include "room.h"
+#include "utils.h"
+
+#include <string>
+#include <iostream>
+#include <ctime>
 
 /* 
 X = STONE WALL

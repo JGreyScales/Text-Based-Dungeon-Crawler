@@ -1,17 +1,8 @@
 ﻿#include "Terrain.h"
-#include "utils.h"
-#include "room.h"
-#include <string>
-#include <iostream>
-#include <ctime>
-#include <math.h>
 
 #define PLAYER "\033[38;5;196m\033[48;5;15m"
 #define EMPTY "\033[48;5;15m";
 #define RESET "\033[0m";
-
-
-
 
 
 room Terrain::generateRandomRoom() {

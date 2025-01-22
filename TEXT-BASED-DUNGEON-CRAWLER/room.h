@@ -1,6 +1,9 @@
 #pragma once
 #include "items.h"
 
+#include <climits>
+#include <random>
+
 class room {
 	int lX;
 	int lY;

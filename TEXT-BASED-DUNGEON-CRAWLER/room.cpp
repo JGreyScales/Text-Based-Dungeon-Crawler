@@ -1,6 +1,4 @@
 #include "room.h"
-#include <climits>
-#include <random>
 
 room::room() {
     lX = 0;
