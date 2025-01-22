@@ -5,6 +5,8 @@ class room {
 	int uX;
 	int uY;
 public:
+	room();
+
 	void setLX(int a);
 	void setLY(int a);
 	void setUX(int a);
@@ -14,6 +16,6 @@ public:
 	int getLY();
 	int getUX();
 	int getUY();
-public:
-	room();
+
+	unsigned char generateRoomItems(room);
 };

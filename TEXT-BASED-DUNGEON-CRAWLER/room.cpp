@@ -53,3 +53,12 @@ int room::getUX() {
 int room::getUY() {
     return uY;
 }
+
+
+
+unsigned char generateRoomItems(room Primary) {
+    unsigned char placedItems = { 0 };
+
+
+    return placedItems;
+}
