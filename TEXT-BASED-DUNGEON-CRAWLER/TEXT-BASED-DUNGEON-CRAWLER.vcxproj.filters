@@ -31,12 +31,12 @@
     <Filter Include="Resource Files\Player">
       <UniqueIdentifier>{1b1dc600-1345-4ad7-a0c1-906ed863aa94}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\objects">
+      <UniqueIdentifier>{b2da462b-8f3e-4b6b-81fd-c697b2c84c37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="POSSIBLE_ROOM_GEN.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="utils.cpp">
@@ -50,6 +50,9 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="items.h">
+      <Filter>Resource Files\objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

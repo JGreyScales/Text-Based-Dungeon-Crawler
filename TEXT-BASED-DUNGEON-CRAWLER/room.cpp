@@ -1,5 +1,6 @@
 #include "room.h"
 #include <climits>
+#include <random>
 
 room::room() {
     lX = 0;
@@ -56,9 +57,7 @@ int room::getUY() {
 
 
 
-unsigned char generateRoomItems(room Primary) {
-    unsigned char placedItems = { 0 };
-
-
-    return placedItems;
+void generateRoomItems(room Primary) {
+   
+    return;
 }

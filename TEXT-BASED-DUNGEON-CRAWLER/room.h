@@ -1,9 +1,12 @@
 #pragma once
+#include "items.h"
+
 class room {
 	int lX;
 	int lY;
 	int uX;
 	int uY;
+	item Items[5];
 public:
 	room();
 
@@ -17,5 +20,5 @@ public:
 	int getUX();
 	int getUY();
 
-	unsigned char generateRoomItems(room);
+	void generateRoomItems(room);
 };

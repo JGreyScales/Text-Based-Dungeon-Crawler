@@ -3,9 +3,11 @@
 
 /* 
 X = STONE WALL
+x = UNKNOWN_TILE
 E = EMPTY TILE
+I = UNKNOWN_ITEM
 P = PLAYER
-
+p = POTION
 
 
 */
