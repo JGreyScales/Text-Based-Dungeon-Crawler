@@ -1,16 +1,19 @@
 #include "Player.h"
 #include "Terrain.h"
+#include "ui.h"
+
 
 #include <windows.h>
 
 
 int main(void) {
-	//Player* player = new Warrior();
-	//player->testMethod();
-	//
-	//Warrior* warptr = dynamic_cast<Warrior*>(player);
-	//warptr->onlyWarrior();
-	Terrain* awa = new Terrain();
+	resizeConsole(200, 50);
+	Player* player = new Warrior();
+	
+	Terrain* awa = new Terrain(player);
 	//delete player;
+
+	printScreen(awa, player);
+	std::cin.get();
 	return 0;
 }

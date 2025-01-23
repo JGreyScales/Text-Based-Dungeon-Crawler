@@ -1,8 +1,2 @@
 ﻿  main.cpp
-  Player.cpp
-  POSSIBLE_ROOM_GEN.cpp
-  room.cpp
-  Terrain.cpp
-  utils.cpp
-  Generating Code...
   TEXT-BASED-DUNGEON-CRAWLER.vcxproj -> C:\Programming\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\x64\Debug\TEXT-BASED-DUNGEON-CRAWLER.exe

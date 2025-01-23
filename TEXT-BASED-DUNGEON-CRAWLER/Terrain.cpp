@@ -1,5 +1,7 @@
 ﻿#include "Terrain.h"
 
+
+
 #define PLAYER "\033[38;5;196m\033[48;5;15m"
 #define EMPTY "\033[48;5;15m";
 #define RESET "\033[0m";
@@ -46,13 +48,19 @@ void Terrain::placeRoom(int y, int x, int roomWidth, int roomHeight) {
 
 void Terrain::connectAllRooms(room rooms[11]) {
     for (unsigned int i = 1; i < generatedRoomCount; i++) {
-        connectRoom(rooms[i - 1], rooms[i], 0, 0, 0, 0);
+        if (!connectRoom(rooms[i - 1], rooms[i], 0, 0, 0, 0, 0)) {
+            i--;
+        }
     }
     return;
 }
 
 
-bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, int sx = 0, int sy = 0) {
+bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, int sx = 0, int sy = 0, int depth = 0) {
+
+    if (depth > 160) {
+        return false;
+    }
     if (px == 0 && py == 0) {
         px = randomBetween(primary.getLX(), primary.getUX());
         py = randomBetween(primary.getLY(), primary.getUY());
@@ -63,7 +71,7 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
 
     // check what direction secondary is from primary & move accordingly
     // the player cant move diagonal, so can only move 1 direction at a time
-    switch (rand() % 13)
+    switch (rand() % 15)
     {
     case 1:
         px++;
@@ -101,7 +109,7 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
         // to set the current pos to E
         return true;
     }
-    else if (connectRoom(primary, secondary, px, py, sx, sy)) {
+    else if (connectRoom(primary, secondary, px, py, sx, sy, depth++)) {
         terrainMap[py][px] = 'E';
         return true;
     }
@@ -127,7 +135,7 @@ void Terrain::printTerrain() {
     return;
 }
 
-Terrain::Terrain() {
+Terrain::Terrain(Player* userChar) {
     memset(this, 0, sizeof(Terrain));
     memset(terrainMap, 'X', sizeof(terrainMap));
 
@@ -140,8 +148,5 @@ Terrain::Terrain() {
     }
     connectAllRooms(rooms);
     spawnPlayer(rooms[0]);
-
-
-    printTerrain();
     return;
 }

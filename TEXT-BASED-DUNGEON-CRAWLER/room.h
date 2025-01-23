@@ -4,12 +4,13 @@
 #include <climits>
 #include <random>
 
+
 class room {
 	int lX;
 	int lY;
 	int uX;
 	int uY;
-	item Items[5];
+	//item Items[5];
 public:
 	room();
 

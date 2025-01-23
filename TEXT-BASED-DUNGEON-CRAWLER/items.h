@@ -1,3 +1,4 @@
+#pragma once
 // item impli will be stack based
 
 class item {
@@ -8,7 +9,7 @@ protected:
 	unsigned int x;
 	unsigned int y;
 public:
-	virtual ~item();
+	//virtual ~item();
 
 	bool isItemInPlayerInventory();
 	unsigned int getX();
@@ -23,11 +24,11 @@ public:
 	void setItemDescription(char[180]);
 };
 
-
-class healthPotion : public item {
-
-};
-
-class strengthPotion : public item {
-
-};
+//
+//class healthPotion : public item {
+//
+//};
+//
+//class strengthPotion : public item {
+//
+//};

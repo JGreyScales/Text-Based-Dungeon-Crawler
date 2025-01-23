@@ -1,5 +1,6 @@
 #include "Player.h"
 
+
 Player::Player(unsigned short HP, short meleeAttack, unsigned short moveDistance)
     : hp(HP), meleeAttack(meleeAttack), moveDistance(moveDistance) {}
 
@@ -7,6 +8,12 @@ Player::~Player() {}
 
 void Player::testMethod() {
     // Implement test method logic here if needed
+}
+
+
+void Player::displayStats(void) {
+    // this will be called after print terrain
+
 }
 
 Warrior::Warrior() : Player(20, 5, 1) {}
@@ -18,3 +25,6 @@ void Warrior::testMethod() {
 void Warrior::onlyWarrior() {
     // Implement onlyWarrior logic here
 }
+
+
+

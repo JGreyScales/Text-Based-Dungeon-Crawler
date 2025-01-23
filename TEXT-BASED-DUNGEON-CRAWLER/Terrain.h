@@ -1,6 +1,7 @@
 #pragma once
 #include "room.h"
 #include "utils.h"
+#include "Player.h"
 
 #include <string>
 #include <iostream>
@@ -27,9 +28,9 @@ protected:
 	bool canPlaceRoom(int, int, int, int);
 	void placeRoom(int, int, int, int);
 	void connectAllRooms(room[11]);
-	bool connectRoom(room, room, int, int, int, int);
+	bool connectRoom(room, room, int, int, int, int, int);
 	void spawnPlayer(room);
 public:
 	void printTerrain();
-	Terrain();
+	Terrain(Player*);
 };
