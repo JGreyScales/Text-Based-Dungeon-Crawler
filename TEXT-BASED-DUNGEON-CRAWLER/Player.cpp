@@ -1,4 +1,4 @@
-#include "Player.h"
+﻿#include "ui.h"
 
 
 Player::Player(unsigned short HP, short meleeAttack, unsigned short moveDistance)
@@ -11,9 +11,30 @@ void Player::testMethod() {
 }
 
 
-void Player::displayStats(void) {
+void Player::displayStats(int line) {
+    std::cout << u8" █";
     // this will be called after print terrain
-
+    switch (line)
+    {
+    case 0:
+        std::cout << u8"████████████████████████";
+        return;
+    case 1:
+        std::cout << " HP: " << this->hp << "               ";
+        break;
+    case 2:
+        std::cout << " Move Distance: " << this->moveDistance << "     ";
+        break;
+    case 3:
+        std::cout << " Melee Damage: " << this->meleeAttack << "      ";
+        break;
+    default:
+        return;
+        break;
+        
+    }
+    std::cout << u8" █";
+    return;
 }
 
 Warrior::Warrior() : Player(20, 5, 1) {}

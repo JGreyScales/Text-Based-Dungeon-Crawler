@@ -7,6 +7,8 @@
 #include <iostream>
 #include <ctime>
 
+
+
 /* 
 X = STONE WALL
 x = UNKNOWN_TILE
@@ -27,10 +29,10 @@ protected:
 	room generateRandomRoom();
 	bool canPlaceRoom(int, int, int, int);
 	void placeRoom(int, int, int, int);
-	void connectAllRooms(room[11]);
+	void connectAllRooms(room[12]);
 	bool connectRoom(room, room, int, int, int, int, int);
 	void spawnPlayer(room);
 public:
-	void printTerrain();
+	void printTerrain(Player*);
 	Terrain(Player*);
 };

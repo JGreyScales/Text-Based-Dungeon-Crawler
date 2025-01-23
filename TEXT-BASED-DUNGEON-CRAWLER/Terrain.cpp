@@ -1,11 +1,8 @@
 ﻿#include "Terrain.h"
 
-
-
-#define PLAYER "\033[38;5;196m\033[48;5;15m"
+#define PLAYER "\033[38;5;196m\033[48;5;15m";
 #define EMPTY "\033[48;5;15m";
 #define RESET "\033[0m";
-
 
 room Terrain::generateRandomRoom() {
     room newRoom = room();
@@ -58,7 +55,7 @@ void Terrain::connectAllRooms(room rooms[11]) {
 
 bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, int sx = 0, int sy = 0, int depth = 0) {
 
-    if (depth > 160) {
+    if (depth > 1000) {
         return false;
     }
     if (px == 0 && py == 0) {
@@ -71,7 +68,7 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
 
     // check what direction secondary is from primary & move accordingly
     // the player cant move diagonal, so can only move 1 direction at a time
-    switch (rand() % 15)
+    switch (rand() % 9999)
     {
     case 1:
         px++;
@@ -100,7 +97,7 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
         };
     }
 
-    if (px < 0 || py < 0) {
+    if (px < 0 || py < 0 || px > 149 || py > 49) {
         return false;
     }
 
@@ -109,7 +106,7 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
         // to set the current pos to E
         return true;
     }
-    else if (connectRoom(primary, secondary, px, py, sx, sy, depth++)) {
+    else if (connectRoom(primary, secondary, px, py, sx, sy, depth + 1)) {
         terrainMap[py][px] = 'E';
         return true;
     }
@@ -123,13 +120,16 @@ void Terrain::spawnPlayer(room spawnRoom) {
     return;
 }
 
-void Terrain::printTerrain() {
+void Terrain::printTerrain(Player* playerChar) {
     for (int y = 0; y < 50; y++) {
         for (int x = 0; x < 150; x++) {
             if (terrainMap[y][x] == 'E') {std::cout << EMPTY;}
             else if (terrainMap[y][x] == 'P') {std::cout << PLAYER;}
             std::cout << terrainMap[y][x] << RESET;
         }
+
+        playerChar->displayStats(y);
+
         std::cout << std::endl;
     }
     return;
@@ -140,7 +140,7 @@ Terrain::Terrain(Player* userChar) {
     memset(terrainMap, 'X', sizeof(terrainMap));
 
     srand(static_cast<unsigned int>(time(NULL)));
-    generatedRoomCount = rand() % 7 + 5;
+    generatedRoomCount = rand() % 7 + 6;
     unsigned int ticker = 0;
     while (ticker < generatedRoomCount) {
         rooms[ticker] = generateRandomRoom();

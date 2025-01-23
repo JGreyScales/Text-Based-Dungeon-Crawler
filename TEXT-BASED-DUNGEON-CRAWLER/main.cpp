@@ -1,13 +1,11 @@
-#include "Player.h"
+﻿#include "Player.h"
 #include "Terrain.h"
 #include "ui.h"
 
 
-#include <windows.h>
-
 
 int main(void) {
-	resizeConsole(200, 50);
+	system("chcp 65001");
 	Player* player = new Warrior();
 	
 	Terrain* awa = new Terrain(player);
