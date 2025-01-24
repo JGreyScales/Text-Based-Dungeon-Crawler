@@ -43,10 +43,20 @@ void Terrain::placeRoom(int y, int x, int roomWidth, int roomHeight) {
 }
 
 
-void Terrain::connectAllRooms(room rooms[11]) {
+void Terrain::connectAllRooms(int depth = 0) {
+    std::cout << "Connect all: " << depth << std::endl;
+    if (depth > 100) {
+        return;
+    }
+    int failureCount = 0;
     for (unsigned int i = 1; i < generatedRoomCount; i++) {
         if (!connectRoom(rooms[i - 1], rooms[i], 0, 0, 0, 0, 0)) {
+            if (failureCount > 1000) {
+                connectAllRooms(depth + 1);
+                return;
+            }
             i--;
+            failureCount++;
         }
     }
     return;
@@ -68,7 +78,7 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
 
     // check what direction secondary is from primary & move accordingly
     // the player cant move diagonal, so can only move 1 direction at a time
-    switch (rand() % 9999)
+    switch (rand() % 13)
     {
     case 1:
         px++;
@@ -146,7 +156,7 @@ Terrain::Terrain(Player* userChar) {
         rooms[ticker] = generateRandomRoom();
         ticker++;
     }
-    connectAllRooms(rooms);
+    connectAllRooms();
     spawnPlayer(rooms[0]);
     return;
 }

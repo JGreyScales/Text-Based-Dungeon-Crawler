@@ -29,7 +29,7 @@ protected:
 	room generateRandomRoom();
 	bool canPlaceRoom(int, int, int, int);
 	void placeRoom(int, int, int, int);
-	void connectAllRooms(room[12]);
+	void connectAllRooms(int);
 	bool connectRoom(room, room, int, int, int, int, int);
 	void spawnPlayer(room);
 public:
