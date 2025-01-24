@@ -6,11 +6,12 @@
 
 room Terrain::generateRandomRoom() {
     room newRoom = room();
+    int failures = 0;
 
     //return newRoom;
     while (true) {
-        newRoom.setLY(rand() % 48 + 1);
-        newRoom.setLX(rand() % 148 + 1);
+        newRoom.setLY(rand() % 40 + 1);
+        newRoom.setLX(rand() % 140 + 1);
         int roomWidth = rand() % 3 + 8;
         int roomHeight = rand() % 3 + 8;
         newRoom.setUY(newRoom.getLY() + roomHeight);
@@ -20,13 +21,22 @@ room Terrain::generateRandomRoom() {
             placeRoom(newRoom.getLY(), newRoom.getLX(), roomWidth, roomHeight);
             return newRoom;
         }
+        else if (failures > 25) {
+            newRoom.setLY(25);
+            newRoom.setLX(50);
+            newRoom.setUY(newRoom.getLY() + roomHeight);
+            newRoom.setUX(newRoom.getLX() + roomWidth);
+            placeRoom(newRoom.getLY(), newRoom.getLX(), roomWidth, roomHeight);
+            return newRoom;
+        }
+        failures++;
     }
 }
 
 bool Terrain::canPlaceRoom(int y, int x, int roomWidth, int roomHeight) {
-    if (y + roomHeight > 49|| x + roomWidth > 149) return false;
-    for (int tmpY = y - 1; tmpY <= roomHeight + y; tmpY++) {
-        for (int tmpX = x - 1; tmpX <= roomWidth + x; tmpX++) {
+    if (y + roomHeight > 49 || x + roomWidth > 149) return false;
+    for (int tmpY = y; tmpY < roomHeight + y; tmpY++) {
+        for (int tmpX = x; tmpX < roomWidth + x; tmpX++) {
             if (this->terrainMap[tmpY][tmpX] == 'E') return false;
         }
     }
@@ -43,54 +53,54 @@ void Terrain::placeRoom(int y, int x, int roomWidth, int roomHeight) {
 }
 
 
-void Terrain::connectAllRooms(int depth = 0) {
-    std::cout << "Connect all: " << depth << std::endl;
-    if (depth > 100) {
-        return;
-    }
-    int failureCount = 0;
+bool Terrain::connectAllRooms(int depth = 0) {
     for (unsigned int i = 1; i < generatedRoomCount; i++) {
         if (!connectRoom(rooms[i - 1], rooms[i], 0, 0, 0, 0, 0)) {
-            if (failureCount > 1000) {
-                connectAllRooms(depth + 1);
-                return;
-            }
             i--;
-            failureCount++;
         }
     }
-    return;
+    return true;
 }
 
 
 bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, int sx = 0, int sy = 0, int depth = 0) {
 
-    if (depth > 1000) {
+    if (depth > 500) {
         return false;
     }
     if (px == 0 && py == 0) {
-        px = randomBetween(primary.getLX(), primary.getUX());
-        py = randomBetween(primary.getLY(), primary.getUY());
+        px = randomBetween(primary.getLX() + 1, primary.getUX() - 1);
+        py = randomBetween(primary.getLY() + 1, primary.getUY() - 1);
 
-        sx = randomBetween(secondary.getLX(), secondary.getUX());
-        sy = randomBetween(secondary.getLY(), secondary.getUY());
+        sx = randomBetween(secondary.getLX() + 1, secondary.getUX() - 1);
+        sy = randomBetween(secondary.getLY() + 1, secondary.getUY() - 1);
     }
 
     // check what direction secondary is from primary & move accordingly
     // the player cant move diagonal, so can only move 1 direction at a time
-    switch (rand() % 13)
+    int choice = INT_MAX;
+    if (depth < 100) {
+        choice = rand() % 6;
+    }
+
+
+    switch (choice)
     {
     case 1:
-        px++;
+        if (py < 49)
+            px++;
         break;
     case 2:
-        py++;
+        if (px < 149)
+            py++;
         break;
     case 3:
-        px--;
+        if (px > 0)
+            px--;
         break;
     case 4:
-        py--;
+        if (py > 0)
+            py--;
         break;
     default:
         if (px < sx) {
@@ -107,13 +117,20 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
         };
     }
 
-    if (px < 0 || py < 0 || px > 149 || py > 49) {
-        return false;
+    if (px < 0) {
+        px = 0;
+    } else if (py < 0){
+        py = 0;
+    }
+    else if (px > 149) {
+        px = 149;
+    }
+    else if (py > 49) {
+        py = 49;
     }
 
     if (py == sy && px == sx) {
-        // we would have been in the center of the object; so it really doesn't matter
-        // to set the current pos to E
+        terrainMap[py][px] = 'E';
         return true;
     }
     else if (connectRoom(primary, secondary, px, py, sx, sy, depth + 1)) {
@@ -124,9 +141,17 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
 }
 
 void Terrain::spawnPlayer(room spawnRoom) {
-    int x = randomBetween(spawnRoom.getLX(), spawnRoom.getUX());
-    int y = randomBetween(spawnRoom.getLY(), spawnRoom.getUY());
+    int x = randomBetween(spawnRoom.getLX() + 1, spawnRoom.getUX() - 1);
+    int y = randomBetween(spawnRoom.getLY() + 1, spawnRoom.getUY() - 1);
     terrainMap[y][x] = 'P';
+    return;
+}
+
+void Terrain::fillRoomsWithItems() {
+    unsigned itemCount = rand() % 5 + 5;
+    while (itemCount-- > 0) {
+
+    }
     return;
 }
 
@@ -146,17 +171,20 @@ void Terrain::printTerrain(Player* playerChar) {
 }
 
 Terrain::Terrain(Player* userChar) {
-    memset(this, 0, sizeof(Terrain));
-    memset(terrainMap, 'X', sizeof(terrainMap));
-
     srand(static_cast<unsigned int>(time(NULL)));
-    generatedRoomCount = rand() % 7 + 6;
-    unsigned int ticker = 0;
-    while (ticker < generatedRoomCount) {
-        rooms[ticker] = generateRandomRoom();
-        ticker++;
-    }
-    connectAllRooms();
+    //memset(this, 0, sizeof(Terrain));
+    do {
+        memset(terrainMap, 'X', sizeof(terrainMap));
+
+        generatedRoomCount = rand() % 5 + 6;
+        unsigned int ticker = 0;
+        while (ticker < generatedRoomCount) {
+            rooms[ticker] = generateRandomRoom();
+            ticker++;
+        }
+    } while (!connectAllRooms());
+
+    //fillRoomsWithItems();
     spawnPlayer(rooms[0]);
     return;
 }

@@ -29,9 +29,10 @@ protected:
 	room generateRandomRoom();
 	bool canPlaceRoom(int, int, int, int);
 	void placeRoom(int, int, int, int);
-	void connectAllRooms(int);
+	bool connectAllRooms(int);
 	bool connectRoom(room, room, int, int, int, int, int);
 	void spawnPlayer(room);
+	void fillRoomsWithItems();
 public:
 	void printTerrain(Player*);
 	Terrain(Player*);

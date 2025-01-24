@@ -1,9 +1,4 @@
-﻿  items.cpp
-  items.h
-  Player.cpp
-  Terrain.cpp
-  ui.cpp
-  Generating Code...
+﻿  Terrain.cpp
 TEXT-BAS.ee9b8f63\x64\Debug\items.obj : warning LNK4042: object specified more than once; extras ignored
   TEXT-BASED-DUNGEON-CRAWLER.vcxproj -> D:\Programming\TDC\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\x64\Debug\TEXT-BASED-DUNGEON-CRAWLER.exe
   'pwsh.exe' is not recognized as an internal or external command,
