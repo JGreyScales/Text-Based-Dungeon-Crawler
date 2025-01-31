@@ -37,7 +37,7 @@ bool Terrain::canPlaceRoom(int y, int x, int roomWidth, int roomHeight) {
     if (y + roomHeight > 49 || x + roomWidth > 149) return false;
     for (int tmpY = y; tmpY < roomHeight + y; tmpY++) {
         for (int tmpX = x; tmpX < roomWidth + x; tmpX++) {
-            if (this->terrainMap[tmpY][tmpX] == 'E') return false;
+            if (_terrainMap[tmpY][tmpX] == 'E') return false;
         }
     }
     return true;
@@ -46,7 +46,7 @@ bool Terrain::canPlaceRoom(int y, int x, int roomWidth, int roomHeight) {
 void Terrain::placeRoom(int y, int x, int roomWidth, int roomHeight) {
     for (int tmpY = y; tmpY < roomHeight + y; tmpY++) {
         for (int tmpX = x; tmpX < roomWidth + x; tmpX++) {
-            this->terrainMap[tmpY][tmpX] = 'E';
+            _terrainMap[tmpY][tmpX] = 'E';
         }
     }
     return;
@@ -54,8 +54,8 @@ void Terrain::placeRoom(int y, int x, int roomWidth, int roomHeight) {
 
 
 bool Terrain::connectAllRooms() {
-    for (unsigned int i = 1; i < generatedRoomCount; i++) {
-        if (!connectRoom(rooms[i - 1], rooms[i], 0, 0, 0, 0, 0)) {
+    for (unsigned int i = 1; i < _generatedRoomCount; i++) {
+        if (!connectRoom(_rooms[i - 1], _rooms[i], 0, 0, 0, 0, 0)) {
             i--;
         }
     }
@@ -130,11 +130,11 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
     }
 
     if (py == sy && px == sx) {
-        terrainMap[py][px] = 'E';
+        _terrainMap[py][px] = 'E';
         return true;
     }
     else if (connectRoom(primary, secondary, px, py, sx, sy, depth + 1)) {
-        terrainMap[py][px] = 'E';
+        _terrainMap[py][px] = 'E';
         return true;
     }
     return false;
@@ -146,7 +146,7 @@ void Terrain::spawnPlayer(room spawnRoom) {
     }
     int x = randomBetween(spawnRoom.getLX() + 1, spawnRoom.getUX() - 1);
     int y = randomBetween(spawnRoom.getLY() + 1, spawnRoom.getUY() - 1);
-    terrainMap[y][x] = 'P';
+    _terrainMap[y][x] = 'P';
     return;
 }
 
@@ -164,9 +164,9 @@ void Terrain::printTerrain(Player* playerChar) {
     }
     for (int y = 0; y < 50; y++) {
         for (int x = 0; x < 150; x++) {
-            if (terrainMap[y][x] == 'E') {std::cout << EMPTY;}
-            else if (terrainMap[y][x] == 'P') {std::cout << PLAYER;}
-            std::cout << terrainMap[y][x] << RESET;
+            if (_terrainMap[y][x] == 'E') {std::cout << EMPTY;}
+            else if (_terrainMap[y][x] == 'P') {std::cout << PLAYER;}
+            std::cout << _terrainMap[y][x] << RESET;
         }
 
         playerChar->displayStats(y);
@@ -179,17 +179,17 @@ void Terrain::printTerrain(Player* playerChar) {
 Terrain::Terrain(Player* userChar) {
     srand(static_cast<unsigned int>(time(NULL)));
     do {
-        memset(terrainMap, 'X', sizeof(terrainMap));
+        memset(_terrainMap, 'X', sizeof(_terrainMap));
 
-        generatedRoomCount = rand() % 5 + 6;
+        _generatedRoomCount = rand() % 5 + 6;
         unsigned int ticker = 0;
-        while (ticker < generatedRoomCount) {
-            rooms[ticker] = generateRandomRoom();
+        while (ticker < _generatedRoomCount) {
+            _rooms[ticker] = generateRandomRoom();
             ticker++;
         }
     } while (!connectAllRooms());
 
     //fillRoomsWithItems();
-    spawnPlayer(rooms[0]);
+    spawnPlayer(_rooms[0]);
     return;
 }

@@ -6,11 +6,10 @@
 
 
 class room {
-	int lX;
-	int lY;
-	int uX;
-	int uY;
-	//item Items[5];
+	int _lX;
+	int _lY;
+	int _uX;
+	int _uY;
 public:
 	room();
 

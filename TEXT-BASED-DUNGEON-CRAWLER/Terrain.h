@@ -22,10 +22,10 @@ p = POTION
 
 class Terrain {
 private:
-	room rooms[11];
-	unsigned int generatedRoomCount;
-	char terrainMap[50][150];
-protected:
+	room _rooms[11];
+	unsigned int _generatedRoomCount;
+	char _terrainMap[50][150];
+
 	room generateRandomRoom();
 	bool canPlaceRoom(int, int, int, int);
 	void placeRoom(int, int, int, int);

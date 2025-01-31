@@ -8,47 +8,47 @@ item::item(const char* name, const char* description) {
 }
 
 bool item::isItemInPlayerInventory() {
-	return this->inInventory;
+	return _inInventory;
 }
 
 unsigned int item::getX() {
-	return this->x;
+	return _x;
 }
 
 unsigned int item::getY() {
-	return this->y;
+	return _y;
 }
 
 char* item::getItemName() {
-	return this->name;
+	return _name;
 }
 
 char* item::getItemDescription() {
-	return this->description;
+	return _description;
 }
 
 void item::setItemStatus(bool status) {
-	this->inInventory = status;
+	_inInventory = status;
 	return;
 }
 
 void item::setX(unsigned char x) {
-	this->x = x;
+	_x = x;
 	return;
 }
 
 void item::setY(unsigned char y) {
-	this->y = y;
+	_y = y;
 	return;
 }
 
 void item::setItemName(const char* name) {
-	strncpy_s(this->name, name, sizeof(this->name) - 1);
+	strncpy_s(_name, name, sizeof(_name) - 1);
 	return;
 }
 
 void item::setItemDescription(const char* description) {
-	strncpy_s(this->description, description, sizeof(this->description) - 1);
+	strncpy_s(_description, description, sizeof(_description) - 1);
 	return;
 }
 

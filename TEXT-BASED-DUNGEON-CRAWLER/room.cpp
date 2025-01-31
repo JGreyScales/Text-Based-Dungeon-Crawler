@@ -1,61 +1,66 @@
 #include "room.h"
 
+
 room::room() {
-    lX = 0;
-    lY = 0;
-    uX = 0;
-    uY = 0;
+    _lX = 0;
+    _lY = 0;
+    _uX = 0;
+    _uY = 0;
+    item roomItems;
 }
 
 
 void room::setLX(int a) {
     if (a < 0 || a > INT_MAX)
         return;
-    lX = a;
+    _lX = a;
     return;
 }
 
 void room::setLY(int a) {
     if (a < 0 || a > INT_MAX)
         return;
-    lY = a;
+    _lY = a;
     return;
 }
 
 void room::setUX(int a) {
     if (a < 0 || a > INT_MAX)
         return;
-    uX = a;
+    _uX = a;
     return;
 }
 
 void room::setUY(int a) {
     if (a < 0 || a > INT_MAX)
         return;
-    uY = a;
+    _uY = a;
     return;
 }
 
 
 int room::getLX() {
-    return lX;
+    return _lX;
 }
 
 int room::getLY() {
-    return lY;
+    return _lY;
 }
 
 int room::getUX() {
-    return uX;
+    return _uX;
 }
 
 int room::getUY() {
-    return uY;
+    return _uY;
 }
 
 
 
 void generateRoomItems(room Primary) {
-   
+    unsigned int roomItemGenCount = rand() % 8 + 2;
+    while (roomItemGenCount-- > 0) {
+
+    }
     return;
 }

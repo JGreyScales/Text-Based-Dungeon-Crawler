@@ -4,14 +4,13 @@
 
 class item {
 protected:
-	char name[60];
-	char description[180];
-	bool inInventory;
-	unsigned char x;
-	unsigned char y;
+	char _name[60];
+	char _description[180];
+	bool _inInventory;
+	unsigned char _x;
+	unsigned char _y;
 public:
 	item(const char*,const char*);
-	//virtual ~item();
 
 	bool isItemInPlayerInventory();
 	unsigned int getX();

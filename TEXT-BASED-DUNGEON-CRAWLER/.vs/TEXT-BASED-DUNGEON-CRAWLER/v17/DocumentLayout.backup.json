@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\items.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|solutionrelative:items.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\items.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|solutionrelative:items.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\Terrain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|solutionrelative:Terrain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\Terrain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|solutionrelative:Terrain.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\ui.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -17,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\items.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{EE9B8F63-A497-4F8F-A9BB-C276A94C9825}|TEXT-BASED-DUNGEON-CRAWLER.vcxproj|solutionrelative:items.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -84,11 +92,37 @@
         },
         {
           "DockedWidth": 8,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "items.h",
+              "DocumentMoniker": "C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\items.h",
+              "RelativeDocumentMoniker": "items.h",
+              "ToolTip": "C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\items.h",
+              "RelativeToolTip": "items.h",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACQAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-31T13:02:25.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Terrain.h",
+              "DocumentMoniker": "C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\Terrain.h",
+              "RelativeDocumentMoniker": "Terrain.h",
+              "ToolTip": "C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\Terrain.h",
+              "RelativeToolTip": "Terrain.h",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB8AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-31T12:56:46.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ui.cpp",
               "DocumentMoniker": "C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\ui.cpp",
               "RelativeDocumentMoniker": "ui.cpp",
@@ -96,12 +130,11 @@
               "RelativeToolTip": "ui.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-30T15:31:51.124Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T15:31:51.124Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "utils.cpp",
               "DocumentMoniker": "C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\utils.cpp",
               "RelativeDocumentMoniker": "utils.cpp",
@@ -109,37 +142,37 @@
               "RelativeToolTip": "utils.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-30T15:31:50.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-30T15:31:50.381Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Terrain.cpp",
               "DocumentMoniker": "C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\Terrain.cpp",
               "RelativeDocumentMoniker": "Terrain.cpp",
               "ToolTip": "C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\Terrain.cpp",
               "RelativeToolTip": "Terrain.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAAAL0AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-18T19:40:07.252Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "items.cpp",
               "DocumentMoniker": "C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\items.cpp",
               "RelativeDocumentMoniker": "items.cpp",
               "ToolTip": "C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\items.cpp",
               "RelativeToolTip": "items.cpp",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAADMAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAADgAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-24T02:13:11.564Z"
+              "WhenOpened": "2025-01-24T02:13:11.564Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Player.cpp",
               "DocumentMoniker": "C:\\Programming\\Text-Based-Dungeon-Crawler\\TEXT-BASED-DUNGEON-CRAWLER\\Player.cpp",
               "RelativeDocumentMoniker": "Player.cpp",
