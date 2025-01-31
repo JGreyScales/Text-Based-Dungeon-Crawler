@@ -53,3 +53,5 @@ void item::setItemDescription(const char* description) {
 }
 
 healthPotion::healthPotion() : item("Health Potion", "A red potion that restores health upon consumption") {};
+
+strengthPotion::strengthPotion() : item("Strenght potion", "A blue strength potion that increases melee power") {};

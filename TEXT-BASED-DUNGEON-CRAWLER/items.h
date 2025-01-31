@@ -33,5 +33,6 @@ class healthPotion : public item {
 };
 
 class strengthPotion : public item {
-
+public:
+	strengthPotion();
 };

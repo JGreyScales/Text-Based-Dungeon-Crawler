@@ -53,7 +53,7 @@ void Terrain::placeRoom(int y, int x, int roomWidth, int roomHeight) {
 }
 
 
-bool Terrain::connectAllRooms(int depth = 0) {
+bool Terrain::connectAllRooms() {
     for (unsigned int i = 1; i < generatedRoomCount; i++) {
         if (!connectRoom(rooms[i - 1], rooms[i], 0, 0, 0, 0, 0)) {
             i--;
@@ -141,6 +141,9 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
 }
 
 void Terrain::spawnPlayer(room spawnRoom) {
+    if (!spawnRoom.getLX() || !spawnRoom.getLY() || !spawnRoom.getUX() || !spawnRoom.getUY()){
+        return;
+    }
     int x = randomBetween(spawnRoom.getLX() + 1, spawnRoom.getUX() - 1);
     int y = randomBetween(spawnRoom.getLY() + 1, spawnRoom.getUY() - 1);
     terrainMap[y][x] = 'P';
@@ -156,6 +159,9 @@ void Terrain::fillRoomsWithItems() {
 }
 
 void Terrain::printTerrain(Player* playerChar) {
+    if (NULL == playerChar) {
+        exit(1);
+    }
     for (int y = 0; y < 50; y++) {
         for (int x = 0; x < 150; x++) {
             if (terrainMap[y][x] == 'E') {std::cout << EMPTY;}
@@ -172,7 +178,6 @@ void Terrain::printTerrain(Player* playerChar) {
 
 Terrain::Terrain(Player* userChar) {
     srand(static_cast<unsigned int>(time(NULL)));
-    //memset(this, 0, sizeof(Terrain));
     do {
         memset(terrainMap, 'X', sizeof(terrainMap));
 
