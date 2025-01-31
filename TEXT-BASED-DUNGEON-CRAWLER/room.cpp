@@ -1,7 +1,7 @@
 #include "room.h"
 
 
-room::room() {
+Room::Room() {
     _lX = 0;
     _lY = 0;
     _uX = 0;
@@ -10,28 +10,28 @@ room::room() {
 }
 
 
-void room::setLX(int a) {
+void Room::setLX(int a) {
     if (a < 0 || a > INT_MAX)
         return;
     _lX = a;
     return;
 }
 
-void room::setLY(int a) {
+void Room::setLY(int a) {
     if (a < 0 || a > INT_MAX)
         return;
     _lY = a;
     return;
 }
 
-void room::setUX(int a) {
+void Room::setUX(int a) {
     if (a < 0 || a > INT_MAX)
         return;
     _uX = a;
     return;
 }
 
-void room::setUY(int a) {
+void Room::setUY(int a) {
     if (a < 0 || a > INT_MAX)
         return;
     _uY = a;
@@ -39,28 +39,64 @@ void room::setUY(int a) {
 }
 
 
-int room::getLX() {
+int Room::getLX() {
     return _lX;
 }
 
-int room::getLY() {
+int Room::getLY() {
     return _lY;
 }
 
-int room::getUX() {
+int Room::getUX() {
     return _uX;
 }
 
-int room::getUY() {
+int Room::getUY() {
     return _uY;
+}
+
+int Room::getGeneratedItemCount() {
+    return _generatedItemCount;
+}
+
+item Room::getItemAtIndex(int x) {
+    if (x < 0 || x > ROOM_MAX_ITEMS - 1) {
+        return;
+    }
+
+    return _roomItems[x];
 }
 
 
 
-void generateRoomItems(room Primary) {
-    unsigned int roomItemGenCount = rand() % 8 + 2;
-    while (roomItemGenCount-- > 0) {
+void Room::generateRoomItems() {
+    // purge room items & delete all data
+    //memset(_roomItems&, 0, sizeof(_roomItems));
 
+    _generatedItemCount = rand() % 8 + 2;
+    unsigned char ticker = 0;
+    while (ticker < _generatedItemCount) {
+        unsigned int choosenItem = rand() % 2 - 1;
+        switch (choosenItem) {
+        case 0:
+            _roomItems[ticker] = healthPotion();
+            break;
+        case 1:
+            _roomItems[ticker] = strengthPotion();
+            break;
+        default:
+            std::cout << "error generating item";
+            return;
+        }
+        ticker++;
     }
     return;
+}
+
+int Room::getRandomXWithinRoom() {
+    return randomBetween(_lX + 1, _uX - 1);
+}
+
+int Room::getRandomYWithinRoom() {
+    return randomBetween(_lY + 1, _uY - 1);
 }

@@ -4,8 +4,9 @@
 #define EMPTY "\033[48;5;15m";
 #define RESET "\033[0m";
 
-room Terrain::generateRandomRoom() {
-    room newRoom = room();
+Room Terrain::generateRandomRoom() {
+    Room newRoom = Room();
+    newRoom.generateRoomItems();
     int failures = 0;
 
     //return newRoom;
@@ -37,7 +38,7 @@ bool Terrain::canPlaceRoom(int y, int x, int roomWidth, int roomHeight) {
     if (y + roomHeight > 49 || x + roomWidth > 149) return false;
     for (int tmpY = y; tmpY < roomHeight + y; tmpY++) {
         for (int tmpX = x; tmpX < roomWidth + x; tmpX++) {
-            if (_terrainMap[tmpY][tmpX] == 'E') return false;
+            if (isSpaceEmpty(tmpX, tmpY)) return false;
         }
     }
     return true;
@@ -63,7 +64,7 @@ bool Terrain::connectAllRooms() {
 }
 
 
-bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, int sx = 0, int sy = 0, int depth = 0) {
+bool Terrain::connectRoom(Room primary, Room secondary, int px = 0, int py = 0, int sx = 0, int sy = 0, int depth = 0) {
 
     if (depth > 500) {
         return false;
@@ -140,7 +141,7 @@ bool Terrain::connectRoom(room primary, room secondary, int px = 0, int py = 0, 
     return false;
 }
 
-void Terrain::spawnPlayer(room spawnRoom) {
+void Terrain::spawnPlayer(Room spawnRoom) {
     if (!spawnRoom.getLX() || !spawnRoom.getLY() || !spawnRoom.getUX() || !spawnRoom.getUY()){
         return;
     }
@@ -151,11 +152,26 @@ void Terrain::spawnPlayer(room spawnRoom) {
 }
 
 void Terrain::fillRoomsWithItems() {
-    unsigned itemCount = rand() % 5 + 5;
-    while (itemCount-- > 0) {
+    unsigned char ticker = 0;
+    while (ticker < _generatedRoomCount) {
+        Room currentRoom = _rooms[ticker];
+        int tmpX = currentRoom.getRandomXWithinRoom();
+        int tmpY = currentRoom.getRandomYWithinRoom();
 
+        // if space is empty, try again
+        if (!isSpaceEmpty(tmpX, tmpY))
+            continue;
+
+        for (int i = 0; i < currentRoom.getGeneratedItemCount(); i++) {
+            _terrainMap[tmpY][tmpX] = currentRoom.getItemAtIndex(i).
+        }
+        ticker++;
     }
     return;
+}
+
+bool Terrain::isSpaceEmpty(int x, int y) {
+    return (_terrainMap[y][x] == 'E');
 }
 
 void Terrain::printTerrain(Player* playerChar) {
@@ -189,7 +205,6 @@ Terrain::Terrain(Player* userChar) {
         }
     } while (!connectAllRooms());
 
-    //fillRoomsWithItems();
     spawnPlayer(_rooms[0]);
     return;
 }

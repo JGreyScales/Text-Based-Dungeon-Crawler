@@ -1,5 +1,10 @@
 #include "items.h"
 
+item::item() {
+	setItemName("error");
+	setItemDescription("error");
+	return;
+}
 
 item::item(const char* name, const char* description) {
 	setItemName(name);
@@ -53,5 +58,11 @@ void item::setItemDescription(const char* description) {
 }
 
 healthPotion::healthPotion() : item("Health Potion", "A red potion that restores health upon consumption") {};
+char healthPotion::getItemLetter() {
+	return 'H';
+}
 
 strengthPotion::strengthPotion() : item("Strenght potion", "A blue strength potion that increases melee power") {};
+char strengthPotion::getItemLetter() {
+	return 'S';
+}

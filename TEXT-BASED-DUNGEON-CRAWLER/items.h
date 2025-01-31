@@ -10,6 +10,7 @@ protected:
 	unsigned char _x;
 	unsigned char _y;
 public:
+	item();
 	item(const char*,const char*);
 
 	bool isItemInPlayerInventory();
@@ -23,15 +24,19 @@ public:
 	void setY(unsigned char);
 	void setItemName(const char*);
 	void setItemDescription(const char*);
+
+	char getItemLetter();
 };
 
 
 class healthPotion : public item {
 	public:
 	healthPotion();
+	char getItemLetter();
 };
 
 class strengthPotion : public item {
 public:
 	strengthPotion();
+	char getItemLetter();
 };

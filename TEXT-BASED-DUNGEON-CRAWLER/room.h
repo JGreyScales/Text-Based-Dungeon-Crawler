@@ -1,17 +1,22 @@
 #pragma once
 #include "items.h"
+#include "utils.h"
 
 #include <climits>
 #include <random>
+#include <iostream>
 
+#define ROOM_MAX_ITEMS 10
 
-class room {
+class Room {
 	int _lX;
 	int _lY;
 	int _uX;
 	int _uY;
+	unsigned int _generatedItemCount;
+	item _roomItems[ROOM_MAX_ITEMS];
 public:
-	room();
+	Room();
 
 	void setLX(int a);
 	void setLY(int a);
@@ -22,6 +27,11 @@ public:
 	int getLY();
 	int getUX();
 	int getUY();
+	int getGeneratedItemCount();
+	item getItemAtIndex(int);
 
-	void generateRoomItems(room);
+	void generateRoomItems();
+	int getRandomXWithinRoom();
+	int getRandomYWithinRoom();
+
 };
