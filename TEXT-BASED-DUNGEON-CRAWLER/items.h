@@ -1,5 +1,5 @@
 #pragma once
-#include <string>
+#include "utils.h"
 
 
 class item {
@@ -25,18 +25,18 @@ public:
 	void setItemName(const char*);
 	void setItemDescription(const char*);
 
-	char getItemLetter();
+	virtual char getItemLetter();
 };
 
 
 class healthPotion : public item {
 	public:
 	healthPotion();
-	char getItemLetter();
+	virtual char getItemLetter() override;
 };
 
 class strengthPotion : public item {
 public:
 	strengthPotion();
-	char getItemLetter();
+	virtual char getItemLetter() override;
 };

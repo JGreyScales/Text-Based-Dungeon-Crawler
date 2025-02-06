@@ -1,10 +1,6 @@
 #pragma once
-#include "items.h"
-#include "utils.h"
+#include "Player.h"
 
-#include <climits>
-#include <random>
-#include <iostream>
 
 #define ROOM_MAX_ITEMS 10
 

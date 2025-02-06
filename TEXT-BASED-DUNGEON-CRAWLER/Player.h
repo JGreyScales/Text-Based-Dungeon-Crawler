@@ -2,7 +2,6 @@
 
 #include "items.h"
 
-#include <iostream>
 
 class Player {
 protected:

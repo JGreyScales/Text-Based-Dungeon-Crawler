@@ -6,6 +6,7 @@ Room::Room() {
     _lY = 0;
     _uX = 0;
     _uY = 0;
+    _generatedItemCount = 0;
     item roomItems;
 }
 
@@ -61,7 +62,7 @@ int Room::getGeneratedItemCount() {
 
 item Room::getItemAtIndex(int x) {
     if (x < 0 || x > ROOM_MAX_ITEMS - 1) {
-        return;
+        return _roomItems[0]; // failure
     }
 
     return _roomItems[x];
@@ -76,7 +77,7 @@ void Room::generateRoomItems() {
     _generatedItemCount = rand() % 8 + 2;
     unsigned char ticker = 0;
     while (ticker < _generatedItemCount) {
-        unsigned int choosenItem = rand() % 2 - 1;
+        unsigned int choosenItem = rand() % 2;
         switch (choosenItem) {
         case 0:
             _roomItems[ticker] = healthPotion();

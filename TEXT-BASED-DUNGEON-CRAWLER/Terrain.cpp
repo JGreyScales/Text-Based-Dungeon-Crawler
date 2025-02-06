@@ -163,7 +163,7 @@ void Terrain::fillRoomsWithItems() {
             continue;
 
         for (int i = 0; i < currentRoom.getGeneratedItemCount(); i++) {
-            _terrainMap[tmpY][tmpX] = currentRoom.getItemAtIndex(i).
+            _terrainMap[tmpY][tmpX] = currentRoom.getItemAtIndex(i).getItemLetter();
         }
         ticker++;
     }

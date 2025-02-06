@@ -1,5 +1,4 @@
-﻿#include "Player.h"
-#include "Terrain.h"
+﻿#include "Terrain.h"
 #include "ui.h"
 
 
