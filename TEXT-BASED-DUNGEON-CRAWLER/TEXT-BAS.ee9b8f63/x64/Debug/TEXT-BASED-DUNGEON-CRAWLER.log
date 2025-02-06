@@ -1,11 +1,5 @@
-﻿  items.cpp
-  items.h
-  main.cpp
-  Player.cpp
-  room.cpp
-  Terrain.cpp
-  ui.cpp
-  utils.cpp
+﻿  Terrain.cpp
+  items.cpp
   Generating Code...
 TEXT-BAS.ee9b8f63\x64\Debug\items.obj : warning LNK4042: object specified more than once; extras ignored
   TEXT-BASED-DUNGEON-CRAWLER.vcxproj -> C:\Programming\Text-Based-Dungeon-Crawler\TEXT-BASED-DUNGEON-CRAWLER\x64\Debug\TEXT-BASED-DUNGEON-CRAWLER.exe

@@ -2,7 +2,27 @@
 
 
 Player::Player(unsigned short HP, short meleeAttack, unsigned short moveDistance)
-    : hp(HP), meleeAttack(meleeAttack), moveDistance(moveDistance) {}
+    : hp(HP), meleeAttack(meleeAttack), moveDistance(moveDistance), _x(0), _y(0) {}
+
+unsigned int Player::getX()
+{
+    return _x;
+}
+
+unsigned int Player::getY()
+{
+    return _y;
+}
+
+void Player::setX(unsigned int x)
+{
+    _x = x;
+}
+
+void Player::setY(unsigned int y)
+{
+    _y = y;
+}
 
 Player::~Player() {}
 

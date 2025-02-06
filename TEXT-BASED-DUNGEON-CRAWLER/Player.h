@@ -10,8 +10,8 @@ protected:
     unsigned short moveDistance;
     //item playerItems[30];
 
-    unsigned int x;
-    unsigned int y;
+    unsigned int _x;
+    unsigned int _y;
 
     Player(unsigned short HP, short meleeAttack, unsigned short moveDistance);
 

@@ -67,7 +67,7 @@ char healthPotion::getItemLetter() {
 	return 'H';
 }
 
-strengthPotion::strengthPotion() : item("Strenght potion", "A blue strength potion that increases melee power") {};
+strengthPotion::strengthPotion() : item("Strength potion", "A blue strength potion that increases melee power") {};
 char strengthPotion::getItemLetter() {
 	return 'S';
 }

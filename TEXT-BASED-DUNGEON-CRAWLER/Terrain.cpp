@@ -79,8 +79,8 @@ bool Terrain::connectRoom(Room primary, Room secondary, int px = 0, int py = 0, 
 
     // check what direction secondary is from primary & move accordingly
     // the player cant move diagonal, so can only move 1 direction at a time
-    int choice = INT_MAX;
-    if (depth < 100) {
+    int choice = 5;
+    if (depth < 80) {
         choice = rand() % 6;
     }
 
@@ -205,6 +205,7 @@ Terrain::Terrain(Player* userChar) {
         }
     } while (!connectAllRooms());
 
+    fillRoomsWithItems();
     spawnPlayer(_rooms[0]);
     return;
 }
