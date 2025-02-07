@@ -158,14 +158,15 @@ void Terrain::fillRoomsWithItems() {
     unsigned char ticker = 0;
     while (ticker < _generatedRoomCount) {
         Room* currentRoom = _rooms[ticker];
-        int tmpX = currentRoom->getRandomXWithinRoom();
-        int tmpY = currentRoom->getRandomYWithinRoom();
-
-        // if space is empty, try again
-        if (!isSpaceEmpty(tmpX, tmpY))
-            continue;
-
         for (int i = 0; i < currentRoom->getGeneratedItemCount(); i++) {
+
+            int tmpX = currentRoom->getRandomXWithinRoom();
+            int tmpY = currentRoom->getRandomYWithinRoom();
+
+            // if space is empty, try again
+            if (!isSpaceEmpty(tmpX, tmpY))
+                continue;
+
             _terrainMap[tmpY][tmpX] = currentRoom->getItemAtIndex(i)->getItemLetter();
         }
         ticker++;

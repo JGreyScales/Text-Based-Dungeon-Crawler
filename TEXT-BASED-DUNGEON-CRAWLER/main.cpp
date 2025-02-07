@@ -10,6 +10,9 @@ int main(void) {
 	Terrain* awa = new Terrain(player);
 	//delete player;
 	printScreen(awa, player);
+
+	delete awa;
+	delete player;
 	std::cin.get();
 	return 0;
 }

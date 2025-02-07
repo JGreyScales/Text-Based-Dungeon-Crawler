@@ -62,11 +62,6 @@ void item::setItemDescription(const char* description) {
 	return;
 }
 
-char item::getItemLetter()
-{
-	return 0;
-}
-
 healthPotion::healthPotion() : item("Health Potion", "A red potion that restores health upon consumption") {};
 char healthPotion::getItemLetter() {
 	return 'H';

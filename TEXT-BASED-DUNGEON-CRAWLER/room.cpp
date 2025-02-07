@@ -8,7 +8,6 @@ Room::Room() {
     _uY = 0;
     _generatedItemCount = 0;
     *_roomItems = { 0 };
-    item roomItems;
 }
 
 Room::~Room()

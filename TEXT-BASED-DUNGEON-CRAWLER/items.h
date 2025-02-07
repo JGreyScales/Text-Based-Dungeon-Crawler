@@ -26,7 +26,7 @@ public:
 	void setItemName(const char*);
 	void setItemDescription(const char*);
 
-	virtual char getItemLetter();
+	virtual char getItemLetter() { return 0; };
 };
 
 
