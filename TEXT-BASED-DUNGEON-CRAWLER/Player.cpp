@@ -24,7 +24,9 @@ void Player::setY(unsigned int y)
     _y = y;
 }
 
-Player::~Player() {}
+Player::~Player() {
+    memset(this, 0, sizeof(Player));
+}
 
 void Player::testMethod() {
     // Implement test method logic here if needed

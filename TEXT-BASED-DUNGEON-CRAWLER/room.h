@@ -2,7 +2,7 @@
 #include "Player.h"
 
 
-#define ROOM_MAX_ITEMS 10
+#define ROOM_MAX_ITEMS 4
 
 class Room {
 	int _lX;
@@ -10,9 +10,10 @@ class Room {
 	int _uX;
 	int _uY;
 	unsigned int _generatedItemCount;
-	item _roomItems[ROOM_MAX_ITEMS];
+	item* _roomItems[ROOM_MAX_ITEMS];
 public:
 	Room();
+	~Room();
 
 	void setLX(int a);
 	void setLY(int a);
@@ -24,7 +25,7 @@ public:
 	int getUX();
 	int getUY();
 	int getGeneratedItemCount();
-	item getItemAtIndex(int);
+	item* getItemAtIndex(int);
 
 	void generateRoomItems();
 	int getRandomXWithinRoom();

@@ -6,6 +6,11 @@ item::item() {
 	return;
 }
 
+item::~item()
+{
+	memset(this, 0, sizeof(item));
+}
+
 item::item(const char* name, const char* description) {
 	setItemName(name);
 	setItemDescription(description);

@@ -11,6 +11,7 @@ protected:
 	unsigned char _y;
 public:
 	item();
+	~item();
 	item(const char*,const char*);
 
 	bool isItemInPlayerInventory();
@@ -32,11 +33,11 @@ public:
 class healthPotion : public item {
 	public:
 	healthPotion();
-	virtual char getItemLetter() override;
+	char getItemLetter();
 };
 
 class strengthPotion : public item {
 public:
 	strengthPotion();
-	virtual char getItemLetter() override;
+	char getItemLetter();
 };

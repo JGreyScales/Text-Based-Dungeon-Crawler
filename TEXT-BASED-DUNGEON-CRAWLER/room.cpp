@@ -7,7 +7,16 @@ Room::Room() {
     _uX = 0;
     _uY = 0;
     _generatedItemCount = 0;
+    *_roomItems = { 0 };
     item roomItems;
+}
+
+Room::~Room()
+{
+    for (unsigned int i = 0; i < _generatedItemCount; i++) {
+        delete _roomItems[i];
+    }
+    memset(this, 0, sizeof(Room));
 }
 
 
@@ -60,7 +69,7 @@ int Room::getGeneratedItemCount() {
     return _generatedItemCount;
 }
 
-item Room::getItemAtIndex(int x) {
+item* Room::getItemAtIndex(int x) {
     if (x < 0 || x > ROOM_MAX_ITEMS - 1) {
         return _roomItems[0]; // failure
     }
@@ -71,19 +80,17 @@ item Room::getItemAtIndex(int x) {
 
 
 void Room::generateRoomItems() {
-    // purge room items & delete all data
-    //memset(_roomItems&, 0, sizeof(_roomItems));
 
-    _generatedItemCount = rand() % 8 + 2;
+    _generatedItemCount = rand() % 3 + 2;
     unsigned char ticker = 0;
     while (ticker < _generatedItemCount) {
         unsigned int choosenItem = rand() % 2;
         switch (choosenItem) {
         case 0:
-            _roomItems[ticker] = healthPotion();
+            _roomItems[ticker] = new healthPotion();
             break;
         case 1:
-            _roomItems[ticker] = strengthPotion();
+            _roomItems[ticker] = new strengthPotion();
             break;
         default:
             std::cout << "error generating item";
