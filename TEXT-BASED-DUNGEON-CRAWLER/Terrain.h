@@ -35,3 +35,6 @@ public:
 	Terrain(Player*);
 	~Terrain();
 };
+
+
+Terrain* initTerrain(Player*);

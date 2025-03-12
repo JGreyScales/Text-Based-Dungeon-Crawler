@@ -4,6 +4,20 @@
 Player::Player(unsigned short HP, short meleeAttack, unsigned short moveDistance)
     : hp(HP), meleeAttack(meleeAttack), moveDistance(moveDistance), _x(0), _y(0) {}
 
+Player* initPlayer(unsigned char type)
+{
+    // create the player based on user input
+    switch (type)
+    {
+    case 1:
+        Player* player = new Warrior();
+        return player;
+    default:
+        break;
+    }
+    return NULL;
+}
+
 unsigned int Player::getX()
 {
     return _x;
@@ -57,6 +71,34 @@ void Player::displayStats(int line) {
     }
     std::cout << u8" █";
     return;
+}
+
+unsigned char Player::getPlayerMovement()
+{
+    // 0x1 to check for toggle
+    // 0x8000 to check for press
+    bool keypressed = false;
+    unsigned char returnV = 0;
+    while (!keypressed) {
+        if (GetKeyState('A') & 0x8000) {
+            keypressed = true;
+            returnV = 1;
+        }
+        else if (GetKeyState('W') & 0x8000) {
+            keypressed = true;
+            returnV = 2;
+        }
+        else if (GetKeyState('S') & 0x8000) {
+            keypressed = true;
+            returnV = 3;
+        }
+        else if (GetKeyState('D') & 0x800) {
+            keypressed = true;
+            returnV = 4;
+        }
+    }
+    // grab player movement, and return the int'ed key value
+    return returnV;
 }
 
 Warrior::Warrior() : Player(20, 5, 1) {}

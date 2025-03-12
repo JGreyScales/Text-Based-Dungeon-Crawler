@@ -16,7 +16,6 @@ protected:
     Player(unsigned short HP, short meleeAttack, unsigned short moveDistance);
 
 public:
-    void printPlayer();
     unsigned int getX();
     unsigned int getY();
     void setX(unsigned int);
@@ -25,7 +24,10 @@ public:
     virtual ~Player();
     virtual void testMethod();
     virtual void displayStats(int);
+    virtual unsigned char getPlayerMovement();
 };
+
+Player* initPlayer(unsigned char);
 
 class Warrior : public Player {
 public:

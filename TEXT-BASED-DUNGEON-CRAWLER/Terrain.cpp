@@ -223,3 +223,9 @@ Terrain::~Terrain()
     }
     memset(this, 0, sizeof(Terrain));
 }
+
+Terrain* initTerrain(Player* cP)
+{
+    Terrain* terrain = new Terrain(cP);
+    return terrain;
+}

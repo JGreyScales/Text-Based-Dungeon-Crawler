@@ -5,13 +5,12 @@
 
 int main(void) {
 	system("chcp 65001");
-	Player* player = new Warrior();
+	Player* player = initPlayer(1);
+	Terrain* terrain = initTerrain(player);
 	
-	Terrain* awa = new Terrain(player);
-	//delete player;
-	printScreen(awa, player);
+	tickGame(terrain, player);
 
-	delete awa;
+	delete terrain;
 	delete player;
 	std::cin.get();
 	return 0;
